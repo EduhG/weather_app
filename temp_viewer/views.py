@@ -21,6 +21,10 @@ def temps_to_json(total):
 
 
 def get_json_temps(request):
+    """
+    Return jso response to ajax requetst
+    """
+
     response = json.dumps(temps_to_json(10))
     try:
         return HttpResponse(response, content_type="application/json")
@@ -58,5 +62,6 @@ def server_error(request):
 
 @login_required(login_url="login/")
 def login(request):
-    template_view = 'temp_viewer/index.html'
-    return render(request, template_view, template_data)
+    template_view = 'temp_viewer/login.html'
+
+    return render(request, template_view)

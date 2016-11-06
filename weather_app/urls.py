@@ -26,5 +26,5 @@ urlpatterns = [
     url(r'^logout/$', views.logout, {'next_page': '/'}, name='logout'),
 ]
 
-handler404 = 'template_view.views.page_not_found'
+handler404 = 'temp_viewer.views.page_not_found'
 handler500 = 'template_view.views.server_error'
