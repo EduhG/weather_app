@@ -17,11 +17,9 @@ from django.conf.urls import url, include
 from django.conf.urls import (
     handler404, handler500
 )
-from temp_viewer import views
 
 urlpatterns = [
-    url(r'^$', views.home_page, name='home'),
-    url(r'^json_temps', views.get_json_temps, name='json_temps'),
+    url(r'^', include('temp_viewer.urls')),
 ]
 
 handler404 = 'template_view.views.page_not_found'

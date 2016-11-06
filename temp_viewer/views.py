@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 import json
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from temp_viewer.models import Temperature
 
@@ -53,3 +54,9 @@ def server_error(request):
     template_view = '500.html'
 
     return render(request, template_view, status=500)
+
+
+@login_required(login_url="login/")
+def login(request):
+    template_view = 'temp_viewer/index.html'
+    return render(request, template_view, template_data)
