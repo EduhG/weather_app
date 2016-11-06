@@ -69,6 +69,8 @@ TEMPLATES = [
     },
 ]
 
+LOGIN_REDIRECT_URL = '/'
+
 WSGI_APPLICATION = 'weather_app.wsgi.application'
 
 

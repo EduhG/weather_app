@@ -18,10 +18,12 @@ from django.contrib.auth import views
 from django.conf.urls import (
     handler404, handler500
 )
+from temp_viewer.forms import LoginForm
 
 urlpatterns = [
     url(r'^', include('temp_viewer.urls')),
-    url(r'^login/$', views.login, {'template_name': 'login.html'}),
+    url(r'^login/$', views.login, {'template_name': 'login.html', 'authentication_form': LoginForm}, name='login'),
+    url(r'^logout/$', views.logout, {'next_page': '/'}, name='logout'),
 ]
 
 handler404 = 'template_view.views.page_not_found'
