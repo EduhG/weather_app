@@ -1,7 +1,12 @@
 # Weather App
-A weather application that displays graphs of temperatures based on time
+A weather application that displays graphs of temperatures based on time.
 
 ## How do I run this project locally?
+
+The app is bundled with a database which contains some data. To run the app as is visit link and use:
+    Username: edwin
+    Password admin2016
+    
 ### 1. Clone the repository:
 
     git clone https://github.com/EduhG/weather_app.git
@@ -18,6 +23,17 @@ A weather application that displays graphs of temperatures based on time
 
     cd weather_app
 
+#### To run the app:
+
+    python manage.py runserver
+    
+### To see it in action, visit //127.0.0.1:8000/ in your web browser with the above login details
+
+### 5. To do a fresh install delete the databse and recreate migrations:
+
+    rm db.sqlite3
+    python manage.py migrate --noinput
+    
 ### 5. Run migrations:
 
     python manage.py migrate
