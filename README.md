@@ -6,7 +6,7 @@ A weather application that displays graphs of temperatures based on time.
 The app is bundled with a database which contains some data. To run the app as is visit link and use:
 #
     Username: edwin
-    Password admin2016
+    Password: admin2016
     
 ### 1. Clone the repository:
 
