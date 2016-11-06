@@ -4,6 +4,7 @@ A weather application that displays graphs of temperatures based on time.
 ## How do I run this project locally?
 
 The app is bundled with a database which contains some data. To run the app as is visit link and use:
+#
     Username: edwin
     Password admin2016
     
