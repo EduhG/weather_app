@@ -13,9 +13,18 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
-from django.contrib import admin
+from django.conf.urls import url, include
+from django.contrib.auth import views
+from django.conf.urls import (
+    handler404, handler500
+)
+from temp_viewer.forms import LoginForm
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^', include('temp_viewer.urls')),
+    url(r'^login/$', views.login, {'template_name': 'login.html', 'authentication_form': LoginForm}, name='login'),
+    url(r'^logout/$', views.logout, {'next_page': '/'}, name='logout'),
 ]
+
+handler404 = 'temp_viewer.views.page_not_found'
+handler500 = 'template_view.views.server_error'
