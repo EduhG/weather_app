@@ -1,13 +1,26 @@
 from django.http import HttpResponse
-from django.shortcuts import (
-    render, render_to_response
-)
+from django.shortcuts import redirect, render
+from temp_viewer.models import Temperature
 
 
 def home_page(request):
     template_view = 'temp_viewer/index.html'
 
-    return render(request, template_view)
+    if request.method == 'POST':
+        print 'request body =>', request.body
+        Temperature.objects.create(
+            date_time=request.POST['date_time'],
+            temp=request.POST['temp'])
+        return redirect('/')
+
+    temps = Temperature.objects.all()
+    return render(request, template_view, {'temps': temps})
+
+
+# def home_page(request):
+#     template_view = 'temp_viewer/index.html'
+
+#     return render(request, template_view)
 
 
 def page_not_found(request):
