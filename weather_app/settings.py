@@ -130,7 +130,7 @@ STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'weather_app/static'),
+    os.path.join(PROJECT_ROOT, 'temp_viewer/static'),
 )
 
 # Simplified static file serving.
