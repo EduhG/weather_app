@@ -19,6 +19,6 @@ class Temperature(models.Model):
 
     def to_json(self):
         return dict(
-            uuid=self.date_time,
-            email=self.temp
+            date_time=self.date_time.strftime('%d/%m/%Y'),
+            temp=self.temp
         )

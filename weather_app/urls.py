@@ -21,6 +21,7 @@ from temp_viewer import views
 
 urlpatterns = [
     url(r'^$', views.home_page, name='home'),
+    url(r'^json_temps', views.get_json_temps, name='json_temps'),
 ]
 
 handler404 = 'template_view.views.page_not_found'
