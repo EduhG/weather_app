@@ -14,8 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.conf.urls import (
+    handler404, handler500
+)
 from temp_viewer import views
 
 urlpatterns = [
     url(r'^$', views.home_page, name='home'),
 ]
+
+handler404 = 'template_view.views.page_not_found'
+handler500 = 'template_view.views.server_error'

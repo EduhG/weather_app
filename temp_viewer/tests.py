@@ -19,7 +19,7 @@ class HomePageTest(TestCase):
 
         request = HttpRequest()
         response = home_page(request)
-        expected_html = render_to_string('index.html')
+        expected_html = render_to_string('temp_viewer/index.html')
 
         self.assertEqual(response.content.decode(), expected_html)
 
