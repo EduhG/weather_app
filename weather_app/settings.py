@@ -26,7 +26,8 @@ SECRET_KEY = '3ox8l5%+y@d*y$=d#39km42fr7!njv(aw9*au2vewe!lu1(9x#'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'temp-grapher.herokuapp.com'
+    'temp-grapher.herokuapp.com',
+    '127.0.0.1'
 ]
 
 
