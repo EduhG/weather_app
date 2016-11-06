@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 
 def home_page(request):
-    pass
+    template_view = 'index.html'
+
+    return render(request, template_view)
