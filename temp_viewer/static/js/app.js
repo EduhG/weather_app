@@ -1,13 +1,13 @@
-$(".form_datetime").datetimepicker({
-    format: "yyyy-mm-dd",
-    autoclose: true,
-    pickTime: false,
-    todayBtn: true,
-    disabledHours:true,
-    useCurrent:true
-});
+$(document).ready(function () {
+    $(".form_datetime").datetimepicker({
+        format: "yyyy-mm-dd",
+        autoclose: true,
+        pickTime: false,
+        todayBtn: true,
+        disabledHours:true,
+        useCurrent:true
+    });
 
-window.onload = function () {
     /*************************************************************************
      * Total Reported Cases Chart
     *************************************************************************/
@@ -73,4 +73,4 @@ window.onload = function () {
             console.log( errorThrown );
         }
     });
-}
+});
