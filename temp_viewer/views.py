@@ -20,8 +20,7 @@ def temps_to_json(total):
 
 
 def get_json_temps(request):
-    response = json.dumps({'temps': temps_to_json(10)})
-
+    response = json.dumps(temps_to_json(10))
     try:
         return HttpResponse(response, content_type="application/json")
     except:

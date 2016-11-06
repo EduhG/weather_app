@@ -8,67 +8,69 @@ $(".form_datetime").datetimepicker({
 });
 
 window.onload = function () {
-    var dps = []; // dataPoints
-
-	var chart = new CanvasJS.Chart("chartContainer",{
-		title :{
-			text: "Live Random Data"
-		},
-		data: [{
-			type: "line",
-			dataPoints: dps
-		}]
-	});
-
-	var xVal = 0;
-	var yVal = 100;
-	var updateInterval = 100;
-	var dataLength = 500; // number of dataPoints visible at any point
-
-	var updateChart = function (count) {
-		count = count || 1;
-		// count is number of times loop runs to generate random dataPoints.
-
-		for (var j = 0; j < count; j++) {
-			yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
-			dps.push({
-				x: xVal,
-				y: yVal
-			});
-			xVal++;
-		};
-		if (dps.length > dataLength)
-		{
-			dps.shift();
-		}
-
-		chart.render();
-
-	};
-
-	// generates first set of dataPoints
-	updateChart(dataLength);
-
-	// update chart after specified time.
-	setInterval(function(){updateChart()}, updateInterval);
-
-}
-
-var get_temps = function(){
-    console.log("adding zipcode polygon");
-
+    /*************************************************************************
+     * Total Reported Cases Chart
+    *************************************************************************/
     $.ajax({
         url : 'json_temps',
         dataType : 'json',
         type : 'GET',
         success: function(data){
-            console.log(data);
-            console.log("adding zipcode polygon" + data);
+            var dates = [];
+            var temps = [];
+
+            for(var i in data) {
+                dates.push(data[i].date_time);
+                temps.push(data[i].temp);
+            }
+
+            var config = {
+                type: 'line',
+                data: {
+                    labels: dates,
+                    datasets: [{
+                        label: "Monthly Temperature Reading",
+                        data: temps,
+                        fill: true,
+                        borderColor: "#4bc0c0"
+                }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            gridLines: {
+                                display: false
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Last 10 Days'
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Temperature Readings'
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    tooltips: {
+                        callbacks: {
+                            label: function (tooltipItem) {
+                                return tooltipItem.yLabel;
+                            }
+                        }
+                    }
+                }
+            };
+
+            var ctx = document.getElementById("chartContainer").getContext("2d");
+            new Chart(ctx, config);
         },
         error: function( jqXhr, textStatus, errorThrown ){
             console.log( errorThrown );
         }
     });
 }
-
-get_temps()

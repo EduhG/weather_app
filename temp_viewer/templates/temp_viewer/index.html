@@ -2,20 +2,15 @@
 
 {% block content %}
     <div class="">
-        <div class="">
-            <h3>Chart here</h3>
-        </div>
-
-        <div class="">
-            {% for temp in temps %}
-                <h5>{{temp.date_time}}</h5>
-                <h5>{{temp.temp}}</h5>
-            {% endfor %}
-        </div>
-
         <div class="row">
-            <div class="col-md-6 col-md-offset-3 col-sm-12">
-                <div id="chartContainer" style="height: 300px; width:100%;"></div>
+            <div class="col-md-8 col-md-offset-2 col-sm-12 chart-container">
+                <div class="chart-header">
+                    <h3>Temperature Chart</h3>
+                </div>
+
+                <div class="demo-container">
+                    <canvas id="chartContainer" width="400" height="200"></canvas>
+        		</div>
             </div>
         </div>
 
@@ -26,7 +21,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Enter Temperature</h4>
+                        <h4 class="modal-title">Temperature</h4>
                     </div>
                     <form class="form-horizontal" method="POST">
                         <div class="modal-body">
